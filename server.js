@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 
 // get routes
-const userRoutes = require("./routes/user");
+const diagnosticoRoutes = require("./routes/diagnostico");
 
 // get MongoDB driver connection
 const dbo = require('./db/conn');
@@ -16,7 +16,7 @@ const app = express();
 // middlewares
 app.use(cors());
 app.use(express.json());
-app.use(userRoutes);
+app.use(diagnosticoRoutes);
 
 // Global error handling
 app.use(function (err, _req, res) {
@@ -25,7 +25,7 @@ app.use(function (err, _req, res) {
 });
 
 app.get("/", (req, res) => {
-    res.send("Hello");
+    res.send("Tomodiag Backend");
 });
 
 // perform a database connection when the server starts
