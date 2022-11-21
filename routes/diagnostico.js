@@ -88,7 +88,6 @@ router.get("/diagnosticos", (req, res) => {
 
     query.exec(function (err, data) {
         if (err) {
-            console.log(err);
             res.status(400).json({
                 status: "ERROR"
             });
@@ -117,7 +116,6 @@ router.get("/diagnosticos/:id", (req, res) => {
 
     query.exec(function (err, data) {
         if (err || data === null) {
-            console.log(err);
             res.status(400).json({
                 status: "ERROR"
             });
@@ -136,11 +134,9 @@ router.get("/diagnosticos/:id", (req, res) => {
 router.post("/diagnosticos/images/upload", 
 upload.single("tomografia"), 
 async (req, res) => {
-    console.log("File:\n", req.file);
     // req.file is the `profile-file` file
     // req.body will hold the text fields,
-    // if there were any
-  
+    // if there were any  
     // req.file.path will have path of image
     // stored in uploads folder
     var localFilePath = req.file.path;
@@ -155,7 +151,6 @@ async (req, res) => {
 
 // crear un diagnóstico nuevo
 router.post("/diagnosticos", (req, res) => {
-    console.log(JSON.stringify(req.body, null, 2));
     const diagnostico = diagnosticoSchema(req.body);
     // creando el diagnostico
     diagnostico
@@ -175,7 +170,6 @@ router.post("/diagnosticos", (req, res) => {
 // actualizar un diagnóstico
 router.put("/diagnosticos/:id", (req, res) => {
     const { id } = req.params;
-    console.log(id);
     const { subject, typeAnalysis, description } = req.body;  
 
     diagnosticoSchema
