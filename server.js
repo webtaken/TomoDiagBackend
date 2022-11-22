@@ -16,6 +16,15 @@ const app = express();
 // middlewares
 app.use(cors());
 app.use(express.json());
+// Creating uploads folder if not already present
+// In "uploads" folder we will temporarily upload
+// image before uploading to cloudinary
+if (!fs.existsSync("./uploads")) {
+    fs.mkdirSync("./uploads");
+}
+app.use(express.static(__dirname + "/public"));
+app.use("/uploads", express.static("uploads"));
+
 app.use(diagnosticoRoutes);
 
 // Global error handling
@@ -29,12 +38,9 @@ app.get("/", (req, res) => {
 });
 
 
-// Creating uploads folder if not already present
-// In "uploads" folder we will temporarily upload
-// image before uploading to cloudinary
-if (!fs.existsSync("./public/diagnosticos")) {
-    fs.mkdirSync("./public/diagnosticos");
-}
+
+
+  
 
 // perform a database connection when the server starts
 dbo.connectToDB((err) => {
