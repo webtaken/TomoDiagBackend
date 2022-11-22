@@ -62,6 +62,7 @@ async function uploadToCloudinary(localFilePath) {
             // cloudinary So we dont need local image 
             // file anymore
             // Remove file from local uploads folder
+            console.log(`Image path: ${localFilePath}`);
             fs.unlinkSync(localFilePath);
   
             return {
