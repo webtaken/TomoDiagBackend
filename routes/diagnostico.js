@@ -144,7 +144,7 @@ async (req, res) => {
     // req.file.path will have path of image
     // stored in uploads folder
     var localFilePath = req.file.path;
-  
+    console.log(localFilePath);
     // Upload the local image to Cloudinary 
     // and get image url as response
     var result = await uploadToCloudinary(localFilePath);
