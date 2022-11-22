@@ -28,6 +28,14 @@ app.get("/", (req, res) => {
     res.send("Tomodiag Backend");
 });
 
+
+// Creating uploads folder if not already present
+// In "uploads" folder we will temporarily upload
+// image before uploading to cloudinary
+if (!fs.existsSync("./public/diagnosticos")) {
+    fs.mkdirSync("./public/diagnosticos");
+}
+
 // perform a database connection when the server starts
 dbo.connectToDB((err) => {
     if(err) {
