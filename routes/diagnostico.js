@@ -21,8 +21,7 @@ cloudinary.config({
 // MULTER
 const multerConfig = multer.diskStorage({
     destination: (req, file, callback) => {
-        console.log(`./public/diagnosticos`);
-        callback(null, `./public/diagnosticos`);
+        callback(null, "./uploads");
     },
     filename: (req, file, callback) => {
         // const extension = file.mimetype.split("/")[1]; // la extensión de la imagen
