@@ -72,6 +72,7 @@ async function uploadToCloudinary(localFilePath) {
         })
         .catch((error) => {
             // Remove file from local uploads folder
+            console.log(`Image path: ${localFilePath}`);
             fs.unlinkSync(localFilePath);
             return { status: "ERROR" };
         });
