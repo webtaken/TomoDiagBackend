@@ -53,6 +53,7 @@ async function uploadToCloudinary(localFilePath) {
     // filePathOnCloudinary: path of image we want
     // to set when it is uploaded to cloudinary
     var filePathOnCloudinary = `${localFilePath}`;
+    console.log(filePathOnCloudinary);
   
     return cloudinary.uploader
         .upload(localFilePath, { public_id: filePathOnCloudinary })
